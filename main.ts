@@ -6,7 +6,7 @@ function RED () {
     range = Strip.range(2, 1)
     range.showColor(neopixel.colors(NeoPixelColors.Black))
 }
-function RED2 () {
+function GREEN () {
     range = Strip.range(0, 1)
     range.showColor(neopixel.colors(NeoPixelColors.Black))
     range = Strip.range(1, 1)
@@ -14,7 +14,7 @@ function RED2 () {
     range = Strip.range(2, 1)
     range.showColor(neopixel.colors(NeoPixelColors.Green))
 }
-function RED3 () {
+function YELLOW () {
     range = Strip.range(0, 1)
     range.showColor(neopixel.colors(NeoPixelColors.Black))
     range = Strip.range(1, 1)
@@ -31,9 +31,9 @@ basic.forever(function () {
     while (true) {
         RED()
         basic.pause(1000)
-        RED2()
+        GREEN()
         basic.pause(1000)
-        RED3()
+        YELLOW()
         basic.pause(1000)
     }
 })
