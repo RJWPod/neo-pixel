@@ -71,6 +71,3 @@ Strip = neopixel.create(DigitalPin.P0, 3, NeoPixelMode.RGB)
 Strip.setBrightness(20)
 basic.showIcon(IconNames.No)
 RED()
-basic.forever(function () {
-	
-})
