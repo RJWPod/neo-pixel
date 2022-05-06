@@ -20,9 +20,13 @@ function Pedestrian_Crossing () {
         `)
 }
 radio.onReceivedNumber(function (receivedNumber) {
-    if (receivedNumber == 7) {
+    if (Distance == 5 && receivedNumber == 7) {
+    	
+    } else if (Distance == 5 && receivedNumber == 6) {
         basic.pause(5000)
-        Car()
+        Vehicle()
+    } else {
+    	
     }
 })
 input.onButtonPressed(Button.A, function () {
@@ -43,6 +47,14 @@ function RED () {
     range.showColor(neopixel.colors(NeoPixelColors.Black))
     range = Strip.range(2, 1)
     range.showColor(neopixel.colors(NeoPixelColors.Black))
+}
+function Vehicle () {
+    basic.showIcon(IconNames.No)
+    GREEN()
+    basic.pause(20000)
+    YELLOW()
+    basic.pause(4000)
+    RED()
 }
 function GREEN () {
     range = Strip.range(0, 1)
@@ -65,14 +77,6 @@ input.onButtonPressed(Button.B, function () {
     RED()
     basic.pause(40000)
 })
-function Car () {
-    basic.showIcon(IconNames.No)
-    GREEN()
-    basic.pause(20000)
-    YELLOW()
-    basic.pause(4000)
-    RED()
-}
 function Pedestrian_Crossing_VI () {
     basic.showLeds(`
         . . # . .
@@ -105,8 +109,8 @@ function YELLOW () {
     range = Strip.range(2, 1)
     range.showColor(neopixel.colors(NeoPixelColors.Black))
 }
-let Distance = 0
 let range: neopixel.Strip = null
+let Distance = 0
 let Strip: neopixel.Strip = null
 let Pedestrian_Crossing_Time = 0
 Pedestrian_Crossing_Time = 20
@@ -122,7 +126,4 @@ basic.forever(function () {
     control.waitMicros(10)
     pins.digitalWritePin(DigitalPin.P1, 1)
     Distance = pins.pulseIn(DigitalPin.P2, PulseValue.High) / 58
-    if (Distance == 5) {
-        radio.sendNumber(7)
-    }
 })
