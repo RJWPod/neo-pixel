@@ -125,7 +125,7 @@ let range: neopixel.Strip = null
 let Strip: neopixel.Strip = null
 let Pedestrian_Crossing_Time = 0
 Pedestrian_Crossing_Time = 20
-Strip = neopixel.create(DigitalPin.P0, 3, NeoPixelMode.RGB)
+Strip = neopixel.create(DigitalPin.P16, 3, NeoPixelMode.RGB)
 Strip.setBrightness(20)
 radio.setGroup(177)
 basic.showIcon(IconNames.No)
