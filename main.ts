@@ -34,7 +34,6 @@ input.onButtonPressed(Button.A, function () {
     YELLOW()
     basic.pause(4000)
     RED()
-    basic.pause(40000)
 })
 function RED () {
     range = Strip.range(0, 1)
@@ -86,7 +85,6 @@ input.onButtonPressed(Button.B, function () {
     YELLOW()
     basic.pause(4000)
     RED()
-    basic.pause(40000)
 })
 function Pedestrian_Crossing_VI () {
     basic.showLeds(`
