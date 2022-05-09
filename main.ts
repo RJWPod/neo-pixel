@@ -11,6 +11,7 @@ function Pedestrian_Crossing () {
         basic.showString("" + (Pedestrian_Crossing_Time))
         Pedestrian_Crossing_Time += -1
     }
+    Pedestrian_Crossing_Time = 20
     basic.showLeds(`
         # . . . #
         . # . # .
@@ -102,6 +103,7 @@ function Pedestrian_Crossing_VI () {
         Pedestrian_Crossing_Time += -1
     }
     music.playTone(698, music.beat(BeatFraction.Whole))
+    Pedestrian_Crossing_Time = 20
     basic.showLeds(`
         # . . . #
         . # . # .
@@ -135,7 +137,7 @@ basic.forever(function () {
     control.waitMicros(10)
     pins.digitalWritePin(DigitalPin.P1, 1)
     Distance = pins.pulseIn(DigitalPin.P2, PulseValue.High) / 58
-    if (Distance == 5) {
+    if (Distance < 5) {
         basic.pause(5000)
         Vehicle()
     }
