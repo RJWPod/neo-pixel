@@ -135,7 +135,7 @@ basic.forever(function () {
     control.waitMicros(2)
     pins.digitalWritePin(DigitalPin.P1, 1)
     control.waitMicros(10)
-    pins.digitalWritePin(DigitalPin.P1, 1)
+    pins.digitalWritePin(DigitalPin.P1, 0)
     Distance = pins.pulseIn(DigitalPin.P2, PulseValue.High) / 58
     if (Distance < 5) {
         basic.pause(5000)
