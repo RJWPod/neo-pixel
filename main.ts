@@ -60,12 +60,14 @@ function Ambulance () {
     RED()
 }
 function Vehicle () {
+    xyz = 1
     basic.showIcon(IconNames.No)
     GREEN()
     basic.pause(20000)
     YELLOW()
     basic.pause(4000)
     RED()
+    xyz = 0
 }
 function GREEN () {
     range = Strip.range(0, 1)
@@ -121,6 +123,7 @@ function YELLOW () {
     range.showColor(neopixel.colors(NeoPixelColors.Black))
 }
 let Distance = 0
+let xyz = 0
 let range: neopixel.Strip = null
 let Strip: neopixel.Strip = null
 let Pedestrian_Crossing_Time = 0
@@ -137,9 +140,10 @@ basic.forever(function () {
     control.waitMicros(10)
     pins.digitalWritePin(DigitalPin.P1, 0)
     Distance = pins.pulseIn(DigitalPin.P2, PulseValue.High) / 58
-    basic.pause(500)
-    if (Distance < 5) {
-        basic.pause(5000)
-        Vehicle()
+    basic.pause(2000)
+    if (Distance > 4 && Distance < 6) {
+        if (xyz == 0) {
+            Vehicle()
+        }
     }
 })
