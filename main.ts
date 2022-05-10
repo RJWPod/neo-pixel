@@ -27,6 +27,7 @@ radio.onReceivedNumber(function (receivedNumber) {
     }
 })
 input.onButtonPressed(Button.A, function () {
+    xyz = 1
     basic.pause(5000)
     Pedestrian_Crossing()
     basic.pause(3000)
@@ -35,6 +36,7 @@ input.onButtonPressed(Button.A, function () {
     YELLOW()
     basic.pause(4000)
     RED()
+    xyz = 0
 })
 function RED () {
     range = Strip.range(0, 1)
@@ -78,6 +80,7 @@ function GREEN () {
     range.showColor(neopixel.colors(NeoPixelColors.Green))
 }
 input.onButtonPressed(Button.B, function () {
+    xyz = 1
     basic.pause(5000)
     music.playTone(587, music.beat(BeatFraction.Quarter))
     music.playTone(698, music.beat(BeatFraction.Half))
@@ -88,6 +91,7 @@ input.onButtonPressed(Button.B, function () {
     YELLOW()
     basic.pause(4000)
     RED()
+    xyz = 0
 })
 function Pedestrian_Crossing_VI () {
     basic.showLeds(`
@@ -123,8 +127,8 @@ function YELLOW () {
     range.showColor(neopixel.colors(NeoPixelColors.Black))
 }
 let Distance = 0
-let xyz = 0
 let range: neopixel.Strip = null
+let xyz = 0
 let Strip: neopixel.Strip = null
 let Pedestrian_Crossing_Time = 0
 Pedestrian_Crossing_Time = 20
