@@ -7,11 +7,11 @@ function Pedestrian_Crossing () {
         # . . . #
         `)
     basic.pause(1000)
-    for (let index = 0; index < 20; index++) {
+    for (let index = 0; index < 15; index++) {
         basic.showString("" + (Pedestrian_Crossing_Time))
         Pedestrian_Crossing_Time += -1
     }
-    Pedestrian_Crossing_Time = 20
+    Pedestrian_Crossing_Time = 15
     basic.showLeds(`
         # . . . #
         . # . # .
@@ -22,7 +22,7 @@ function Pedestrian_Crossing () {
 }
 radio.onReceivedNumber(function (receivedNumber) {
     if (receivedNumber == 7) {
-        basic.pause(2000)
+        basic.pause(1000)
         Ambulance()
     }
 })
@@ -56,7 +56,7 @@ function Ambulance () {
         `)
     basic.pause(2000)
     GREEN()
-    basic.pause(20000)
+    basic.pause(10000)
     YELLOW()
     basic.pause(4000)
     RED()
@@ -102,14 +102,14 @@ function Pedestrian_Crossing_VI () {
         # . . . #
         `)
     basic.pause(1000)
-    for (let index = 0; index < 20; index++) {
+    for (let index = 0; index < 15; index++) {
         music.playTone(988, music.beat(BeatFraction.Half))
         music.playTone(784, music.beat(BeatFraction.Half))
         basic.showString("" + (Pedestrian_Crossing_Time))
         Pedestrian_Crossing_Time += -1
     }
     music.playTone(698, music.beat(BeatFraction.Whole))
-    Pedestrian_Crossing_Time = 20
+    Pedestrian_Crossing_Time = 15
     basic.showLeds(`
         # . . . #
         . # . # .
@@ -131,7 +131,7 @@ let range: neopixel.Strip = null
 let xyz = 0
 let Strip: neopixel.Strip = null
 let Pedestrian_Crossing_Time = 0
-Pedestrian_Crossing_Time = 20
+Pedestrian_Crossing_Time = 15
 Strip = neopixel.create(DigitalPin.P16, 3, NeoPixelMode.RGB)
 Strip.setBrightness(20)
 radio.setGroup(177)
