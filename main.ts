@@ -60,6 +60,7 @@ function Ambulance () {
     YELLOW()
     basic.pause(4000)
     RED()
+    radio.sendNumber(8)
 }
 function Vehicle () {
     xyz = 1
