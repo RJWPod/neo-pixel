@@ -27,16 +27,26 @@ radio.onReceivedNumber(function (receivedNumber) {
     }
 })
 input.onButtonPressed(Button.A, function () {
-    xyz = 1
-    basic.pause(5000)
-    Pedestrian_Crossing()
-    basic.pause(3000)
-    GREEN()
-    basic.pause(20000)
-    YELLOW()
-    basic.pause(4000)
-    RED()
-    xyz = 0
+    mode += 1
+    if (xyz == 0 || Visually_Impaired == 1) {
+    	
+    } else if (mode > 1) {
+        for (let index = 0; index <= mode; index++) {
+        	
+        }
+        mode = 0
+    } else {
+        mode += 1
+        Citizen += 1
+        basic.pause(5000)
+        Pedestrian_Crossing()
+        basic.pause(3000)
+        GREEN()
+        basic.pause(20000)
+        YELLOW()
+        basic.pause(4000)
+        RED()
+    }
 })
 function RED () {
     range = Strip.range(0, 1)
@@ -63,14 +73,13 @@ function Ambulance () {
     radio.sendNumber(8)
 }
 function Vehicle () {
-    xyz = 1
     basic.showIcon(IconNames.No)
     GREEN()
     basic.pause(20000)
     YELLOW()
     basic.pause(4000)
     RED()
-    xyz = 0
+    xyz = 1
 }
 function GREEN () {
     range = Strip.range(0, 1)
@@ -81,18 +90,27 @@ function GREEN () {
     range.showColor(neopixel.colors(NeoPixelColors.Green))
 }
 input.onButtonPressed(Button.B, function () {
-    xyz = 1
-    basic.pause(5000)
-    music.playTone(587, music.beat(BeatFraction.Quarter))
-    music.playTone(698, music.beat(BeatFraction.Half))
-    Pedestrian_Crossing_VI()
-    basic.pause(3000)
-    GREEN()
-    basic.pause(20000)
-    YELLOW()
-    basic.pause(4000)
-    RED()
-    xyz = 0
+    if (xyz == 0 || Citizen == 1) {
+    	
+    } else if (mode > 1) {
+        for (let index = 0; index <= mode; index++) {
+        	
+        }
+        mode = 0
+    } else {
+        mode += 1
+        Visually_Impaired += 1
+        basic.pause(5000)
+        music.playTone(587, music.beat(BeatFraction.Quarter))
+        music.playTone(698, music.beat(BeatFraction.Half))
+        Pedestrian_Crossing_VI()
+        basic.pause(3000)
+        GREEN()
+        basic.pause(20000)
+        YELLOW()
+        basic.pause(4000)
+        RED()
+    }
 })
 function Pedestrian_Crossing_VI () {
     basic.showLeds(`
@@ -129,9 +147,16 @@ function YELLOW () {
 }
 let Distance = 0
 let range: neopixel.Strip = null
-let xyz = 0
 let Strip: neopixel.Strip = null
 let Pedestrian_Crossing_Time = 0
+let Visually_Impaired = 0
+let Citizen = 0
+let xyz = 0
+let mode = 0
+mode = 0
+xyz = 1
+Citizen = 0
+Visually_Impaired = 0
 Pedestrian_Crossing_Time = 15
 Strip = neopixel.create(DigitalPin.P16, 3, NeoPixelMode.RGB)
 Strip.setBrightness(20)
@@ -147,7 +172,8 @@ basic.forever(function () {
     Distance = pins.pulseIn(DigitalPin.P2, PulseValue.High) / 58
     basic.pause(2000)
     if (Distance > 4 && Distance < 6) {
-        if (xyz == 0) {
+        xyz += -1
+        if (xyz == 0 && Citizen == 0) {
             Vehicle()
         }
     }
