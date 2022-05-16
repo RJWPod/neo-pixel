@@ -30,13 +30,8 @@ input.onButtonPressed(Button.A, function () {
     mode += 1
     if (xyz == 0 || Visually_Impaired == 1) {
     	
-    } else if (mode > 1) {
-        for (let index = 0; index <= mode; index++) {
-        	
-        }
-        mode = 0
     } else {
-        mode += 1
+        mode += 0
         Citizen += 1
         basic.pause(5000)
         Pedestrian_Crossing()
